@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-  var lista = arrayListOf<String>()
+  var lista = arrayListOf<Produto>()
+  var adapter= ProdutoAdapter(lista)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -20,7 +23,25 @@ class MainActivity : AppCompatActivity() {
     add()
     })
 
+  }
 
+  fun add(){
+    if(edtProduto.text.toString().length>3){
+      val produto= Produto(edtProduto.text.toString(),edtPreco.text.toString().toDouble(),edtQtd.text.toString().toInt())
+      lista.add(produto)
+      edtProduto.text.clear()
+      edtPreco.text.clear()
+      edtQtd.text.clear()
+      initRecyclerView()
+    }else{
+      Toast.makeText(applicationContext,"Texto Curto",Toast.LENGTH_SHORT).show()
+    }
+
+  }
+  private fun initRecyclerView(){
+    rvDados.adapter = adapter
+    val layoutManager= LinearLayoutManager(this)
+    rvDados.layoutManager=layoutManager
   }
   override fun onStart() {
     super.onStart()
@@ -51,18 +72,5 @@ class MainActivity : AppCompatActivity() {
     Log.e("Ciclo de vida","onDestroy(): A última função a ser executada. Depois dela, a Activity é considerada “morta” – ou seja, não pode mais ser relançada. Se o usuário voltar a requisitar essa Activity, um novo objeto será construído.")
   }
 
-  fun add(){
 
-    if(edtProduto.text.toString().length>3){
-      lista.add(edtProduto.text.toString())
-      edtProduto.text.clear()
-      var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,lista)
-      listViewItens.adapter=adapter
-    }else{
-      Toast.makeText(applicationContext,"Texto Curto",Toast.LENGTH_SHORT).show()
-    }
-
-
-
-  }
 }

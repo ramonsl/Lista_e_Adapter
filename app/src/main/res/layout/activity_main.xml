@@ -34,6 +34,7 @@
     android:id="@+id/edtProduto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
     android:layout_marginTop="8dp"
     android:ems="10"
     android:hint="Produto"
@@ -43,15 +44,41 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-  <ListView
-    android:id="@+id/listViewItens"
-    android:layout_width="wrap_content"
+  <EditText
+    android:id="@+id/edtQtd"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:ems="10"
+    android:hint="Quantidade"
+    android:inputType="number"
+    app:layout_constraintEnd_toStartOf="@+id/edtPreco"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/edtProduto" />
+
+  <EditText
+    android:id="@+id/edtPreco"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Preço"
+    android:inputType="number"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/edtQtd"
+    app:layout_constraintTop_toTopOf="@+id/edtQtd" />
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvDados"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
     android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginEnd="16dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+    app:layout_constraintTop_toBottomOf="@+id/edtQtd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
