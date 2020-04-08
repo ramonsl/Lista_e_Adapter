@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
   }
   private fun initRecyclerView(){
     rvDados.adapter = adapter
-    val layoutManager= LinearLayoutManager(this)
+//    val layoutManager= LinearLayoutManager(this)
+    val layoutManager= GridLayoutManager(this,2)
     rvDados.layoutManager=layoutManager
   }
   override fun onStart() {
