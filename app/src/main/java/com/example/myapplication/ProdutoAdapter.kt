@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item.view.*
 
 class ProdutoAdapter (private val produtos: List<Produto>): RecyclerView.Adapter<ProdutoAdapter.VH>() {
-
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
     val v= LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
     val vh = VH(v)
